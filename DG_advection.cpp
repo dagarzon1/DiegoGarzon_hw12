@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-  //Parametros de tiempo, distancia e iteraciones de tiempo y distancia
+  //Parametros de tiempo, distancia, constante c e iteraciones de tiempo y distancia
   int Nt=700;
   int t_print=700/5;
   double c=1.0;
@@ -54,12 +54,12 @@ int main()
       u1[j][i]=u[i];
     }
   }
+  //Impresion de los nuevos valores equiespaciados
   x=-8.0;
   for(int i=0;i<Nx;i++)
   {
     x+=dx;
     cout<<x<<" "<<u1[0][i]<<" "<<u1[139][i]<<" "<<u1[279][i]<<" "<<u1[419][i]<<" "<<u1[559][i]<<endl;
   }
-
   return 0;
 }
