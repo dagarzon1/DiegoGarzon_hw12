@@ -10,18 +10,18 @@ int main()
   double c=1.0;
   double dt=10E-3;
   double dx=c*dt;
-  int Nx=4/dx;
+  int Nx=16/dx;
 
   //Arreglos para guardar las 4 funciones en el tiempo
-  double * u1= new double[Nx];
-  double * u2= new double[Nx];
-  double * u3= new double[Nx];
-  double * u4= new double[Nx];
-  double * u5= new double[Nx];
+  double ** u1= new double*[Nt];
+  for(int i=0;i<Nt;i++)
+  {
+    u1[i]=new double[Nx];
+  }
 
   //Condiciones iniciales
   double * in_u = new double[Nx];
-  double x=-2.0;
+  double x=-8.0;
   for(int i=0;i<Nx;i++)
   {
     x+=dx;
@@ -51,31 +51,14 @@ int main()
     for(int i=1;i<Nx-1;i++)
     {
       in_u[i]=u[i];
-      switch(j/t_print)
-      {
-        case 0:
-        u1[i]=in_u[i];
-        break;
-        case 1:
-        u2[i]=in_u[i];
-        break;
-        case 2:
-        u3[i]=in_u[i];
-        break;
-        case 3:
-        u4[i]=in_u[i];
-        break;
-        case 4:
-        u5[i]=in_u[i];
-        break;
-      }
+      u1[j][i]=u[i];
     }
   }
-  x=-2.0;
+  x=-8.0;
   for(int i=0;i<Nx;i++)
   {
     x+=dx;
-    cout<<x<<" "<<u1[i]<<" "<<u2[i]<<" "<<u3[i]<<" "<<u4[i]<<" "<<u5[i]<<endl;
+    cout<<x<<" "<<u1[0][i]<<" "<<u1[139][i]<<" "<<u1[279][i]<<" "<<u1[419][i]<<" "<<u1[559][i]<<endl;
   }
 
   return 0;
